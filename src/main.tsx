@@ -11,15 +11,23 @@ import { PageAbout } from "./pages/PageAbout.tsx";
 import { Page404 } from "./pages/Page404.tsx";
 import { AppProvider } from "./AppContext.tsx";
 import { PageManageFlashcards } from "./pages/PageManageFlashcards.tsx";
+import { ISiteEnvironment } from "./shared/interfaces.ts";
+import { PageFlashcards } from "./pages/PageFlashcards.tsx";
 
-const children = [
+const siteEnvironment: ISiteEnvironment = import.meta.env.VITE_ENV;
+
+let children = [
 	{
-		path: "/welcome",
+		path: "welcome",
 		element: <PageWelcome />,
 	},
 	{
 		path: "manage-flashcards",
 		element: <PageManageFlashcards />,
+	},
+	{
+		path: "flashcards",
+		element: <PageFlashcards />,
 	},
 	{
 		path: "about",
@@ -30,6 +38,10 @@ const children = [
 		element: <Navigate to="/welcome" replace />,
 	},
 ];
+
+if (siteEnvironment === "production") {
+	children = children.filter((m) => !["manage-flashcards"].includes(m.path));
+}
 
 const router = createBrowserRouter([
 	{
