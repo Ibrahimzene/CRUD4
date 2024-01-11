@@ -1,9 +1,10 @@
 import db from '../../backend/data/db.json';
 
-console.log(db);
+const flashcards = db.flashcards;
+
 export const PageFlashcards = () => {
 
 	return (
-		<p>This is the flashcards page.</p>
+		<p>There are {flashcards.length} flashcards:</p>
 	)
 }
