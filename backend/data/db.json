@@ -1,6 +1,12 @@
 {
   "flashcards": [
     {
+      "suuid": "G9tO25",
+      "category": "Heute",
+      "front": "LearnApp Part 4: Deployment to Vercel using environment variables for local CRUD site and online read-only site",
+      "back": "HOWTO: Jan 10 - CRUD React Frontend"
+    },
+    {
       "suuid": "82Js23",
       "category": "linux",
       "front": "how to find out your Linux shell",
