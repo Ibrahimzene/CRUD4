@@ -1,12 +1,6 @@
 {
   "flashcards": [
     {
-      "suuid": "KsKraT",
-      "category": "linuxCCCC",
-      "front": "AAA",
-      "back": "AAACDC"
-    },
-    {
       "suuid": "G9tO25",
       "category": "Heute",
       "front": "LearnApp Part 4: Deployment to Vercel using environment variables for local CRUD site and online read-only site",
