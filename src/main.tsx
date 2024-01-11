@@ -12,29 +12,31 @@ import { Page404 } from "./pages/Page404.tsx";
 import { AppProvider } from "./AppContext.tsx";
 import { PageManageFlashcards } from "./pages/PageManageFlashcards.tsx";
 
+const children = [
+	{
+		path: "/welcome",
+		element: <PageWelcome />,
+	},
+	{
+		path: "manage-flashcards",
+		element: <PageManageFlashcards />,
+	},
+	{
+		path: "about",
+		element: <PageAbout />,
+	},
+	{
+		path: "/",
+		element: <Navigate to="/welcome" replace />,
+	},
+];
+
 const router = createBrowserRouter([
 	{
 		path: "/",
 		errorElement: <Page404 />,
 		element: <App />,
-		children: [
-			{
-				path: "/welcome",
-				element: <PageWelcome />,
-			},
-			{
-				path: "manage-flashcards",
-				element: <PageManageFlashcards />,
-			},
-			{
-				path: "about",
-				element: <PageAbout />,
-			},
-			{
-				path: "/",
-				element: <Navigate to="/welcome" replace />,
-			},
-		],
+		children,
 	},
 ]);
 
