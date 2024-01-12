@@ -1,14 +1,34 @@
-import { IFlashcard } from "../shared/interfaces"
+import { ITestingFlashcard } from "../shared/interfaces";
 
 interface IProps {
-	flashcard: IFlashcard;
+	testingFlashcard: ITestingFlashcard;
+	setTestingFlashcards: (testingFlashcards: ITestingFlashcard[]) => void;
+	testingFlashcards: ITestingFlashcard[];
 }
 
-export const Flashcard = ({ flashcard }: IProps) => {
+export const Flashcard = ({
+	testingFlashcard,
+	setTestingFlashcards,
+	testingFlashcards,
+}: IProps) => {
+	const handleToggleFlashcard = (testingFlashcard: ITestingFlashcard) => {
+		testingFlashcard.backIsShowing = !testingFlashcard.backIsShowing;
+		setTestingFlashcards(structuredClone(testingFlashcards));
+	};
+
 	return (
 		<div className="mb-4 w-[40rem]">
-			<div className="bg-slate-500 p-4 rounded-t-lg">{flashcard.front}</div>
-			<div className="bg-slate-300 p-4 rounded-b-lg">{flashcard.back}</div>
+			<div
+				onClick={() => handleToggleFlashcard(testingFlashcard)}
+				className="bg-slate-500 p-4 rounded-t-lg cursor-pointer"
+			>
+				{testingFlashcard.front}
+			</div>
+			{testingFlashcard.backIsShowing && (
+				<div className="bg-slate-300 p-4 rounded-b-lg">
+					{testingFlashcard.back}
+				</div>
+			)}
 		</div>
-	)
-}
+	);
+};
